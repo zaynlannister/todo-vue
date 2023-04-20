@@ -28,19 +28,21 @@ setInterval(() => {
   currentTime.value = format(Date.now(), "HH:mm:ss");
 }, 1000);
 </script>
-<style>
+<style lang="scss">
 .app {
   width: 880px;
   margin: 0 auto;
 }
 
-.todo__header {
-  width: fit-content;
-  margin-left: auto;
-  padding: 10px 0;
-}
+.todo {
+  &__header {
+    width: fit-content;
+    margin-left: auto;
+    padding: 10px 0;
+  }
 
-.todo-wrapper {
-  margin-top: 40px;
+  &-wrapper {
+    margin-top: 40px;
+  }
 }
 </style>
