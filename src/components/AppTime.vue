@@ -4,14 +4,14 @@
     <div class="time">
       <div class="title">На часах у нас:</div>
       <div class="time__data">
-        <span>i</span>
+        <span><i class="bi bi-clock time-icon"></i></span>
         <span class="primary-text">{{ props.time }}</span>
       </div>
     </div>
     <div class="date">
       <div class="title">Сегодня у нас:</div>
       <div class="date__data">
-        <span>i</span>
+        <span><i class="bi bi-calendar date-icon"></i></span>
         <span class="primary-text">{{ props.date }}</span>
       </div>
     </div>
@@ -42,5 +42,10 @@ const props = defineProps(["time", "date"]);
 
 .primary-text {
   font-size: 20px;
+}
+
+.date-icon,
+.time-icon {
+  margin-right: 10px;
 }
 </style>

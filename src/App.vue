@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <div class="todo-list">
-      <div class="todo-list__header">Хорошего дня, username</div>
+    <div class="todo">
+      <div class="todo__header">Хорошего дня, username</div>
       <app-table>
         <app-time :time="currentTime" :date="currentDate" />
       </app-table>
@@ -28,7 +28,7 @@ setInterval(() => {
   margin: 0 auto;
 }
 
-.todo-list__header {
+.todo__header {
   width: fit-content;
   margin-left: auto;
   padding: 10px 0;
