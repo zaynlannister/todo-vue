@@ -5,6 +5,11 @@
       <app-table>
         <app-time :time="currentTime" :date="currentDate" />
       </app-table>
+      <div class="todo-wrapper">
+        <app-table>
+          <todo-list></todo-list>
+        </app-table>
+      </div>
     </div>
   </div>
 </template>
@@ -12,6 +17,7 @@
 <script setup>
 import AppTable from "./components/AppTable.vue";
 import AppTime from "./components/AppTime.vue";
+import TodoList from "./components/TodoList.vue";
 import { format } from "date-fns";
 import { ref } from "vue";
 
@@ -32,5 +38,9 @@ setInterval(() => {
   width: fit-content;
   margin-left: auto;
   padding: 10px 0;
+}
+
+.todo-wrapper {
+  margin-top: 40px;
 }
 </style>
