@@ -2,14 +2,14 @@
   <div class="todo-list">
     <div class="todo-list__actions">
       <div class="todo-list__input">
-        <input type="text" placeholder="Введите задачу" />
+        <input v-model="inputValue" type="text" placeholder="Введите задачу" />
       </div>
       <div class="todo-list__button">
-        <button>Создать</button>
+        <button @click="create">Создать</button>
       </div>
     </div>
     <div class="todo-list__tasks">
-      <div v-for="task in tasks.tasksList" class="todo-task">
+      <div v-for="task in tasksList" class="todo-task">
         <div class="todo-task__title">{{ task.title }}</div>
         <div class="todo-task__actions">
           <div class="todo-task__close-button">
@@ -24,8 +24,15 @@
   </div>
 </template>
 <script setup>
-import { useTasksStore } from "@/stores/tasks.ts";
+import { useTasksStore } from "@/stores/tasks";
+import { computed, ref } from "vue";
 const tasks = useTasksStore();
+const tasksList = computed(() => tasks.tasksList);
+const inputValue = ref("");
+
+function create() {
+  tasks.createTask(inputValue.value);
+}
 </script>
 <style lang="scss">
 input,

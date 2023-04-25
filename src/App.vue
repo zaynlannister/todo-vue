@@ -19,7 +19,7 @@ import AppTable from "./components/AppTable.vue";
 import AppTime from "./components/AppTime.vue";
 import TodoList from "./components/TodoList.vue";
 import { format } from "date-fns";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 let currentTime = ref(format(Date.now(), "HH:mm:ss"));
 let currentDate = format(Date.now(), "yyyy-MM-dd");
