@@ -8,22 +8,11 @@
         <button @click="create">Создать</button>
       </div>
     </div>
-    <div class="todo-list__tasks">
-      <div v-for="task in tasksList" class="todo-task">
-        <div class="todo-task__title">{{ task.title }}</div>
-        <div class="todo-task__actions">
-          <div class="todo-task__close-button">
-            <i class="bi bi-x-square-fill"></i>
-          </div>
-          <div class="todo-task__checkbox">
-            <i class="bi bi-toggle-off"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    <todo-task v-for="task in tasksList" :task="task" />
   </div>
 </template>
 <script setup>
+import TodoTask from "./TodoTask.vue";
 import { useTasksStore } from "@/stores/tasks";
 import { computed, ref } from "vue";
 const tasks = useTasksStore();
@@ -32,6 +21,7 @@ const inputValue = ref("");
 
 function create() {
   tasks.createTask(inputValue.value);
+  inputValue.value = "";
 }
 </script>
 <style lang="scss">
