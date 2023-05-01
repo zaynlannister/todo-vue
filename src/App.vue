@@ -7,7 +7,7 @@
       </app-table>
       <div class="todo-wrapper">
         <app-table>
-          <todo-list></todo-list>
+          <todo-list :date="currentDate"></todo-list>
         </app-table>
       </div>
     </div>

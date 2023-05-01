@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="todo-list__tasks">
+      <div class="created__at">{{ date }}</div>
       <div class="todo-task">
         <div class="todo-task__title">{{ task.title }}</div>
         <div class="todo-task__actions">
@@ -17,7 +18,42 @@
 </template>
 
 <script setup>
-const props = defineProps(["task"]);
+const props = defineProps(["task", "date"]);
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.created__at {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #868686;
+}
+
+.todo-list__tasks {
+  padding: 15px 0 0 0;
+}
+
+.todo-task {
+  display: flex;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 0 0 10px 0;
+
+  &__title {
+    margin-right: 10px;
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__close-button {
+    color: #ff6262;
+    margin-right: 5px;
+  }
+
+  &__close-button,
+  &__checkbox {
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+</style>

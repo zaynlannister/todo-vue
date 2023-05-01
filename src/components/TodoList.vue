@@ -8,13 +8,16 @@
         <button @click="create">Создать</button>
       </div>
     </div>
-    <todo-task v-for="task in tasksList" :task="task" />
+    <todo-task v-for="task in tasksList" :task="task" :date="date" />
   </div>
 </template>
 <script setup>
 import TodoTask from "./TodoTask.vue";
 import { useTasksStore } from "@/stores/tasks";
 import { computed, ref } from "vue";
+
+const props = defineProps(["date"]);
+
 const tasks = useTasksStore();
 const tasksList = computed(() => tasks.tasksList);
 const inputValue = ref("");
@@ -64,31 +67,6 @@ button {
       background-color: #fff;
       color: #000;
     }
-  }
-}
-
-.todo-task {
-  display: flex;
-  border-bottom: 1px solid #e2e2e2;
-  padding: 15px 0;
-
-  &__title {
-    margin-right: 10px;
-  }
-
-  &__actions {
-    display: flex;
-  }
-
-  &__close-button {
-    color: #ff6262;
-    margin-right: 5px;
-  }
-
-  &__close-button,
-  &__checkbox {
-    cursor: pointer;
-    font-size: 18px;
   }
 }
 </style>
