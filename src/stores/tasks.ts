@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import type { Task } from "src/types/types";
 
 export const useTasksStore = defineStore("tasks", {
   state: () => {
@@ -19,7 +20,7 @@ export const useTasksStore = defineStore("tasks", {
       });
     },
 
-    removeTask(task) {
+    removeTask(task: Task) {
       const taskIndex = this.tasksList.findIndex((item) => item.id === task.id);
       this.tasksList.splice(taskIndex, 1);
     },
