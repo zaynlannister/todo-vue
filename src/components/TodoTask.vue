@@ -6,7 +6,7 @@
         <div class="todo-task__title">{{ task.title }}</div>
         <div class="todo-task__actions">
           <div class="todo-task__close-button">
-            <i class="bi bi-x-square-fill"></i>
+            <i @click="tasks.removeTask(task)" class="bi bi-x-square-fill"></i>
           </div>
           <div class="todo-task__checkbox">
             <i class="bi bi-toggle-off"></i>
@@ -18,7 +18,9 @@
 </template>
 
 <script setup>
+import { useTasksStore } from "@/stores/tasks";
 const props = defineProps(["task", "date"]);
+const tasks = useTasksStore();
 </script>
 
 <style lang="scss">

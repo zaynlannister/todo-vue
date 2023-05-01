@@ -1,30 +1,30 @@
 <template>
-  <div class="todo-list">
-    <div class="todo-list__actions">
-      <div class="todo-list__input">
-        <input v-model="inputValue" type="text" placeholder="Введите задачу" />
+  <div>
+    <div class="todo-list">
+      <div class="todo-list__actions">
+        <div class="todo-list__input">
+          <input v-model="input" type="text" placeholder="Введите задачу" />
+        </div>
+        <div class="todo-list__button">
+          <button @click="create">Создать</button>
+        </div>
       </div>
-      <div class="todo-list__button">
-        <button @click="create">Создать</button>
-      </div>
+      <todo-task v-for="task in tasksList" :task="task" :date="date" />
     </div>
-    <todo-task v-for="task in tasksList" :task="task" :date="date" />
   </div>
 </template>
 <script setup>
 import TodoTask from "./TodoTask.vue";
 import { useTasksStore } from "@/stores/tasks";
-import { computed, ref } from "vue";
+import { computed, ref, getCurrentInstance } from "vue";
 
-const props = defineProps(["date"]);
-
-const tasks = useTasksStore();
-const tasksList = computed(() => tasks.tasksList);
-const inputValue = ref("");
+const props = defineProps(["tasksList", "date"]);
+const emit = defineEmits(["create"]);
+const input = ref("");
 
 function create() {
-  tasks.createTask(inputValue.value);
-  inputValue.value = "";
+  emit("create", input.value);
+  input.value = "";
 }
 </script>
 <style lang="scss">

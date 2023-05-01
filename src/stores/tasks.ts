@@ -18,5 +18,10 @@ export const useTasksStore = defineStore("tasks", {
         completed: false,
       });
     },
+
+    removeTask(task) {
+      const taskIndex = this.tasksList.findIndex((item) => item.id === task.id);
+      this.tasksList.splice(taskIndex, 1);
+    },
   },
 });
