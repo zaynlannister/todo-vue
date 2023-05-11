@@ -3,13 +3,22 @@
     <div class="todo-list__tasks">
       <div class="created__at">{{ date }}</div>
       <div class="todo-task">
-        <div class="todo-task__title">{{ task.title }}</div>
+        <div
+          class="todo-task__title"
+          :class="{ 'completed-task': task.completed }"
+        >
+          {{ task.title }}
+        </div>
         <div class="todo-task__actions">
           <div class="todo-task__close-button">
             <i @click="tasks.removeTask(task)" class="bi bi-x-square-fill"></i>
           </div>
           <div class="todo-task__checkbox">
-            <i class="bi bi-toggle-off"></i>
+            <i
+              @click="completeTask(task)"
+              :class="switchClass(task)"
+              class="bi"
+            ></i>
           </div>
         </div>
       </div>
@@ -21,6 +30,18 @@
 import { useTasksStore } from "@/stores/tasks";
 const props = defineProps(["task", "date"]);
 const tasks = useTasksStore();
+
+function completeTask(task) {
+  tasks.completeTask(task);
+}
+
+function switchClass(task) {
+  if (task.completed) {
+    return "bi-toggle-on";
+  } else {
+    return "bi-toggle-off";
+  }
+}
 </script>
 
 <style lang="scss">
@@ -57,5 +78,10 @@ const tasks = useTasksStore();
     cursor: pointer;
     font-size: 18px;
   }
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 </style>

@@ -24,5 +24,9 @@ export const useTasksStore = defineStore("tasks", {
       const taskIndex = this.tasksList.findIndex((item) => item.id === task.id);
       this.tasksList.splice(taskIndex, 1);
     },
+
+    completeTask(task: Task) {
+      task.completed = !task.completed;
+    },
   },
 });
