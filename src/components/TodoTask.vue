@@ -37,7 +37,7 @@ function completeTask(task) {
 
 function switchClass(task) {
   if (task.completed) {
-    return "bi-toggle-on";
+    return "bi-toggle-on complete-switcher-on";
   } else {
     return "bi-toggle-off";
   }
@@ -83,5 +83,9 @@ function switchClass(task) {
 .completed-task {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+.complete-switcher-on {
+  color: rgb(33, 204, 133);
 }
 </style>
