@@ -3,7 +3,12 @@
     <div class="todo-list">
       <div class="todo-list__actions">
         <div class="todo-list__input">
-          <input v-model="input" type="text" placeholder="Введите задачу" />
+          <input
+            @keydown.enter="create"
+            v-model="input"
+            type="text"
+            placeholder="Введите задачу"
+          />
         </div>
         <div class="todo-list__button">
           <button @click="create">Создать</button>
