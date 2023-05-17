@@ -8,11 +8,17 @@
         </app-table>
         <div class="todo-wrapper">
           <app-table>
-            <todo-list
+            <!-- <todo-list
               :tasksList="tasks.tasksList"
               :date="currentDate"
               @create="createTask"
-            ></todo-list>
+            ></todo-list> -->
+            <router-view
+              to="/"
+              :tasksList="tasks.tasksList"
+              :date="currentDate"
+              @create="createTask"
+            ></router-view>
           </app-table>
         </div>
       </div>
