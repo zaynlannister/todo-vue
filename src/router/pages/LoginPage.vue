@@ -16,14 +16,30 @@
             type="text"
           />
 
-          <button class="button login__page-button">Зарегистрироваться</button>
+          <button @click="register" class="button login__page-button">
+            Зарегистрироваться
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { provide, ref } from "vue";
+import { useLoginsStore } from "@/stores/logins";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const logins = useLoginsStore();
+const isAuthenticated = ref(false);
+
+provide("isAuthenticated", isAuthenticated);
+
+function register() {
+  console.log(logins.register("admin1", "admin1"));
+}
+</script>
 
 <style lang="scss">
 p {
@@ -31,7 +47,7 @@ p {
 }
 
 .container {
-  width: 800px;
+  width: 100vw;
   margin: 0 auto;
   background-color: #ffff;
   height: 100vh;
@@ -50,7 +66,8 @@ p {
   top: 50%;
   padding: 40px 30px;
   border-radius: 4px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid #b1b1b1;
+  //box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 
   &-title {
     margin-bottom: 20px;
