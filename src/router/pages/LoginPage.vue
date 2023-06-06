@@ -8,12 +8,14 @@
             class="input login__page-input"
             type="text"
             placeholder="Введите имя"
+            v-model="login"
           />
 
           <input
             class="input login__page-input"
             placeholder="Введите пароль"
             type="text"
+            v-model="password"
           />
 
           <button @click="register" class="button login__page-button">
@@ -26,18 +28,25 @@
 </template>
 
 <script setup>
-import { provide, ref } from "vue";
+import { ref } from "vue";
 import { useLoginsStore } from "@/stores/logins";
 import { useRouter } from "vue-router";
 
+const login = ref("");
+const password = ref("");
+
 const router = useRouter();
 const logins = useLoginsStore();
-const isAuthenticated = ref(false);
-
-provide("isAuthenticated", isAuthenticated);
 
 function register() {
-  console.log(logins.register("admin1", "admin1"));
+  const store = useLoginsStore();
+  store.register(login.value, password.value, 12);
+
+  if (store.isAuthenticated) {
+    router.push("/");
+  } else {
+    console.error("no");
+  }
 }
 </script>
 
